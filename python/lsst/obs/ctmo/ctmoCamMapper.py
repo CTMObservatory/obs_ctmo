@@ -63,3 +63,18 @@ class CtmoCamMapper(CameraMapper):
 
         # ...and set your default filter.
         self.defaultFilterName = "Clear"
+
+    def _computeCcdExposureId(self, dataId):
+        """Compute the 64-bit (long) identifier for a CCD exposure.
+
+        Parameters
+        ----------
+        dataId : `dict`
+            Data identifier including dayObs and seqNum.
+
+        Returns
+        -------
+        id : `int`
+            Integer identifier for a CCD exposure.
+        """
+        return dataId["run"]
