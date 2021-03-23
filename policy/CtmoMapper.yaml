@@ -65,14 +65,14 @@ calibrations:
     level: Ccd
     tables: bias
     columns:
-      - ccd
-      - taiObs
+      - detector
+      - calibDate
     reference: raw_visit
     refCols:
-      - ccd
-      - filter
+      - detector
+      - calibDate
     validRange: true
-    template: CALIB/BIAS/BIAS_%(ccd)s_%(calibDate)s.fits
+    template: CALIB/BIAS/BIAS_%(detector)s_%(calibDate)s.fits
 
   dark:
     python: lsst.afw.image.ImageF
@@ -81,11 +81,11 @@ calibrations:
     level: Ccd
     tables: dark
     columns:
-      - ccd
+      - detector
     reference: raw_visit
     refCols:
-      - ccd
-      - filter
+      - detector
+      - calibDate
     validRange: true
     validStartName: validStart
     validEndName: validEnd
@@ -97,11 +97,12 @@ calibrations:
     level: Ccd
     tables: flat
     columns:
-      - ccd
-      - taiObs
+      - detector
+      - calibDate
     reference: raw_visit
     refCols:
-      - ccd
+      - detector
+      - calibDate
       - filter
     validRange: true
     template: CALIB/FLAT/%(filter)s/FLAT_%(ccd)s_%(calilbDate)s.fits
